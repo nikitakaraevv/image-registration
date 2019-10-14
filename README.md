@@ -2,7 +2,7 @@
 
 Image registration is the process of transforming different images of one scene into the same coordinate system. You can find more about it in [this wonderful article](https://www.sicara.ai/blog/2019-07-16-image-registration-deep-learning).
 
-We will use [AKAZE](https://vovkos.github.io/doxyrest-showcase/opencv/sphinx_rtd_theme/page_tutorial_akaze_matching.html) local features from [OpenCV 2D Features framework](http://www.bmva.org/bmvc/2013/Papers/paper0013/paper0013.pdf) to detect and match keypoints on two images. These matching keypoints will allow us to compute the [homography matrix](https://en.wikipedia.org/wiki/Homography_(computer_vision)) and warp the second image so that we will make a panorama.
+We will use [AKAZE](https://vovkos.github.io/doxyrest-showcase/opencv/sphinx_rtd_theme/page_tutorial_akaze_matching.html) local features from [OpenCV 2D Features framework](https://vovkos.github.io/doxyrest-showcase/opencv/sphinx_rtd_theme/page_tutorial_table_of_content_features2d.html) to detect and match keypoints on two images. These matching keypoints will allow us to compute the [homography matrix](https://en.wikipedia.org/wiki/Homography_(computer_vision)) and warp the second image so that we will make a panorama.
 # Algorithm
 
 Original images
