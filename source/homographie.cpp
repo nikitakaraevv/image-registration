@@ -11,23 +11,23 @@ using namespace cv;
 int main()
 {
     //Load grayscale images
-	Mat I1 = imread("../IMG_0045.JPG", IMREAD_GRAYSCALE);
-	Mat I2 = imread("../IMG_0046.JPG", IMREAD_GRAYSCALE);
+    Mat I1 = imread("../IMG_0045.JPG", IMREAD_GRAYSCALE);
+    Mat I2 = imread("../IMG_0046.JPG", IMREAD_GRAYSCALE);
 
-	imshow("I1", I1);
-	imshow("I2", I2);
+    imshow("I1", I1);
+    imshow("I2", I2);
 
     //Detect keypoints and compute descriptors using AKAZE
-	Ptr<AKAZE> D = AKAZE::create();
+    Ptr<AKAZE> D = AKAZE::create();
 	
-	vector<KeyPoint> kpts1, kpts2, matched1, matched2;
+    vector<KeyPoint> kpts1, kpts2, matched1, matched2;
     Mat desc1, desc2;
     
     D->detectAndCompute(I1, noArray(), kpts1, desc1);
     D->detectAndCompute(I2, noArray(), kpts2, desc2);
 	
 	
-	Mat J; //to save temporal images
+    Mat J; //to save temporal images
     drawKeypoints(I1, kpts1, J);
     imshow("Keypoints 1", J);
     imwrite("Keypoints1.jpg", J);
@@ -37,7 +37,7 @@ int main()
     
     
     //Use brute-force matcher to find 2-nn matches
-	BFMatcher M(NORM_HAMMING);
+    BFMatcher M(NORM_HAMMING);
     vector< vector<DMatch> > knn_matches;
     vector<DMatch> good_matches;
     M.knnMatch(desc2, desc1, knn_matches, 2);
@@ -58,7 +58,7 @@ int main()
     }
     
     drawMatches(I1, matched1, I2, matched2, good_matches, J);
-	imshow("Matches", J);
+    imshow("Matches", J);
     imwrite("Matches.jpg", J);
     
     //Use matches to compute the homography matrix
@@ -85,6 +85,6 @@ int main()
     imshow("Panorama", Panorama);
     imwrite("Panorama.jpg", Panorama);
 
-	waitKey(0);
-	return 0;
+    waitKey(0);
+    return 0;
 }
